@@ -1,4 +1,4 @@
-# Projet 8 du parcours développeur front-end d'OpenClassrooms - Reprenez et améliorez un projet existant
+# Projet 8 du parcours Développeur front-end d'OpenClassrooms - Reprenez et améliorez un projet existant
 
 Brief du projet :
 
@@ -14,8 +14,7 @@ Le deuxième introduit un conflit éventuel entre deux IDs identiques.
 Il faut chercher ces bugs, une fois  trouvés, il faut les corriger ! Ils empêchent le code de marcher correctement (pour l'instant il n'est même pas possible d'ajouter des tâches à la liste à cause de ces bugs).
  
 Il y a également des améliorations à faire, même s'il ne s'agit pas de bugs proprement dit. Il faut essayer de trouver où vous pouvez optimiser des boucles et vérifiez s'il y a des fonctions qui affichent des informations dans la console de débogage qui ne sont pas nécessaires (console.log).
- 
- 
+
 Etape 2 : Ajouter des tests
 
 Ce projet a déjà quelques tests mais largement pas assez ! Pour le prendre en main, il va falloir ajouter tous les tests unitaires et fonctionnels  pertinents que l’on peut. L'objectif est de solidifier le projet. Ainsi, lorsque nous le modifierons par la suite, on pourra se baser sur ces tests pour vérifier qu’on ne “casse” rien. (= fait gagner du temps par la suite)
