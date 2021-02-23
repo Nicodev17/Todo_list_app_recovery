@@ -89,9 +89,9 @@
 	 * @returns {string} String containing the count
 	 */
 	Template.prototype.itemCounter = function (activeTodos) {
-		var plural = activeTodos === 1 ? '' : 's';
+		var plural = activeTodos === 1 || activeTodos === 0 ? '' : 's';
 
-		return '<strong>' + activeTodos + '</strong> item' + plural + ' left';
+		return '<strong>' + activeTodos + '</strong> task' + plural + ' left';
 	};
 
 	/**
