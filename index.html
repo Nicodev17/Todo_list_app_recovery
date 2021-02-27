@@ -2,10 +2,10 @@
 <html lang="en" data-framework="javascript">
 	<head>
 		<meta charset="utf-8">
-		<title>To-do list app</title>
-		<!-- Inutile -->
-		<!-- <link rel="stylesheet" href="node_modules/todomvc-common/base.css"> -->
+		<title>TODO List App</title>
+		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
 		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<link rel="icon" type="image/png" href="media/favicon_todo.png"/>
 	</head>
 	<body>
 		<section class="todoapp">
@@ -14,8 +14,8 @@
 				<input class="new-todo" placeholder="What needs to be done?" autofocus>
 			</header>
 			<section class="main">
-				<input class="toggle-all" type="checkbox">
-				<label for="toggle-all">Mark all as complete</label>
+				<input class="toggle-all" id="toggle-all" type="checkbox">
+				<label for="toggle-all" title="Mark all as complete"></label>
 				<ul class="todo-list"></ul>
 			</section>
 			<footer class="footer">

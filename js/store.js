@@ -97,9 +97,8 @@
 			localStorage[this._dbName] = JSON.stringify(data);
 			callback.call(this, todos);
 		} else {
-			// Optimised part : Generate and assign ID based on the number of todos already present
-			updateData.id = (todos.length) + 1;
-
+			// Optimized part : Generate and assign ID based on the date (= unique)
+			updateData.id = Date.now();
 			todos.push(updateData);
 			localStorage[this._dbName] = JSON.stringify(data);
 			callback.call(this, [updateData]);
@@ -116,11 +115,12 @@
 		var data = JSON.parse(localStorage[this._dbName]);
 		var todos = data.todos;
 
-		// Optimised Part : for loop simplification
+		// Optimized Part : for loop simplification
 		for (var i = 0; i < todos.length; i++) {
 			if (todos[i].id === id) {
 				todos.splice(i, 1);
 			}
+
 		}
 
 		localStorage[this._dbName] = JSON.stringify(data);
