@@ -113,6 +113,10 @@
 			toggleAll: function () {
 				self.$toggleAll.checked = parameter.checked;
 			},
+			// OPTIMIZED (toggleAllVisibility for testing)
+			toggleAllVisibility: function () {
+				self.$toggleAll.style.display = parameter.visible ? 'block' : 'none';
+			},
 			setFilter: function () {
 				self._setFilter(parameter);
 			},

@@ -89,6 +89,7 @@
 	 * @returns {string} String containing the count
 	 */
 	Template.prototype.itemCounter = function (activeTodos) {
+		// OPTIMIZED (s removed when there is only one or zero tasks left)
 		var plural = activeTodos === 1 || activeTodos === 0 ? '' : 's';
 
 		return '<strong>' + activeTodos + '</strong> task' + plural + ' left';

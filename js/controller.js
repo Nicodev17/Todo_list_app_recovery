@@ -230,7 +230,9 @@
 			});
 
 			self.view.render('toggleAll', {checked: todos.completed === todos.total});
+			// OPTIMIZED (toggleAllVisibility fo testing)
 			self.view.render('contentBlockVisibility', {visible: todos.total > 0});
+			self.view.render('toggleAllVisibility', {visible: todos.total > 0});
 		});
 	};
 
