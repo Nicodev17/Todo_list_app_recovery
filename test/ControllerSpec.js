@@ -217,6 +217,18 @@ describe('controller', function () {
 
 			expect(model.update).toHaveBeenCalledWith(21, {completed: false}, jasmine.any(Function));
 		});
+		
+		// *** ADDITIONAL ADDED TEST ***
+		it('should update the model', function () {
+			var todo = {id: 21, title: 'my todo', completed: true};
+			setUpModel([todo]);
+
+			subject.setView('');
+
+			view.trigger('toggleAll', {completed: false});
+
+			expect(model.update).toHaveBeenCalledWith(21, {completed: false}, jasmine.any(Function));
+		});
 
 		// *** ADDED TEST 7 ***
 		it('should update the view', function () {
@@ -277,6 +289,18 @@ describe('controller', function () {
 
 			expect(view.render).toHaveBeenCalledWith('clearNewTodo');
 		});
+
+		// *** ADDITIONAL ADDED TEST ***
+		it('should update the element count', function () {
+			setUpModel([]);
+
+			subject.setView('');
+
+			var newTitle = 'New Todo';
+			view.trigger('newTodo', newTitle);
+
+			expect(view.render).toHaveBeenCalledWith('updateElementCount', 0);
+		});
 	});
 
 	describe('element removal', function () {
@@ -333,6 +357,17 @@ describe('controller', function () {
 
 			expect(view.render).toHaveBeenCalledWith('removeItem', 42);
 		});
+
+		// *** ADDITIONAL ADDED TEST ***
+		it('should update the element count', function () {
+			var todo = {id: 42, title: 'my todo', completed: true};
+			setUpModel([todo]);
+
+			subject.setView('');
+			view.trigger('removeCompleted', {id: 42});
+
+			expect(view.render).toHaveBeenCalledWith('updateElementCount', 0);
+		});
 	});
 
 	describe('element complete toggle', function () {
@@ -354,6 +389,17 @@ describe('controller', function () {
 			view.trigger('itemToggle', {id: 42, completed: false});
 
 			expect(view.render).toHaveBeenCalledWith('elementComplete', {id: 42, completed: false});
+		});
+
+		// *** ADDITIONAL ADDED TEST ***
+		it('should update the element count', function () {
+			var todo = {id: 42, title: 'my todo', completed: true};
+			setUpModel([todo]);
+
+			subject.setView('');
+			view.trigger('itemToggle', {id: 42, completed: false});
+
+			expect(view.render).toHaveBeenCalledWith('updateElementCount', 0);
 		});
 	});
 
@@ -380,7 +426,7 @@ describe('controller', function () {
 			expect(view.render).toHaveBeenCalledWith('editItemDone', {id: 21, title: 'new title'});
 		});
 
-		it('should persist the changes on done', function () {
+		it('should save the changes on done', function () {
 			var todo = {id: 21, title: 'my todo', completed: false};
 			setUpModel([todo]);
 
@@ -424,7 +470,7 @@ describe('controller', function () {
 			expect(view.render).toHaveBeenCalledWith('editItemDone', {id: 21, title: 'my todo'});
 		});
 
-		it('should not persist the changes on cancel', function () {
+		it('should not save the changes on cancel', function () {
 			var todo = {id: 21, title: 'my todo', completed: false};
 			setUpModel([todo]);
 

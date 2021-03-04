@@ -120,9 +120,8 @@
 			if (todos[i].id === id) {
 				todos.splice(i, 1);
 			}
-
 		}
-
+		
 		localStorage[this._dbName] = JSON.stringify(data);
 		callback.call(this, todos);
 	};
