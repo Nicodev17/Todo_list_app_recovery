@@ -25,7 +25,6 @@ ControllerSpec.js .  À l'intérieur de ce fichier, quelques tests à ajouter so
 
 Ils se trouvent sur les lignes #62, #86, #90, #137, #141, #146, #150, #156, et #196 de  ControllerSpec.js .
 (possibilité d’aller plus loin et d’ajouter des tests complémentaires)
-Astuce : gagnez du temps en adoptant la méthode TDD. Comme beaucoup de développeurs, si vous rédigez vos tests et corrigez des bugs en même temps, vous pouvez utiliser des tests pour identifier ce qui ne fonctionne pas - ce qui accélère la correction des bugs.
 
 ## Etape 3 : Optimiser les performances (audit)
 
