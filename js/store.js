@@ -1,11 +1,12 @@
 /*jshint eqeqeq:false */
-(function (window) {
+// (function (window) {
 	'use strict';
 
 	/**
 	 * Creates a new client side storage object and will create an empty
 	 * collection if no collection already exists.
 	 *
+	 * @constructor
 	 * @param {string} name The name of our DB we want to use
 	 * @param {function} callback Our fake DB uses callbacks because in
 	 * real life you probably would be making AJAX calls
@@ -32,7 +33,7 @@
 	/**
 	 * Finds items based on a query given as a JS object
 	 *
-	 * @param {object} query The query to match against (i.e. {foo: 'bar'})
+	 * @param {object} query The query to match against (= {foo: 'bar'})
 	 * @param {function} callback	 The callback to fire when the query has
 	 * completed running
 	 *
@@ -83,7 +84,11 @@
 
 		callback = callback || function () {};
 
-		// If an ID was actually given, find the item and update each property
+		/**
+		 * If an ID was actually given, find the item and update each property
+		 * 
+		 * @param {number} id ID of the todo.
+		 */
 		if (id) {
 			for (var i = 0; i < todos.length; i++) {
 				if (todos[i].id === id) {
@@ -97,7 +102,10 @@
 			localStorage[this._dbName] = JSON.stringify(data);
 			callback.call(this, todos);
 		} else {
-			// Optimized part : Generate and assign ID based on the date (= unique)
+			/**
+			 * Optimized part : Generate and assign ID based on the date (= unique)
+			 * Returns the number of milliseconds elapsed since January 1, 1970 00:00:00 UTC.
+			 */
 			updateData.id = Date.now();
 			todos.push(updateData);
 			localStorage[this._dbName] = JSON.stringify(data);
@@ -129,7 +137,7 @@
 	/**
 	 * Will drop all storage and start fresh
 	 *
-	 * @param {function} callback The callback to fire after dropping the data
+	 * @param {function} callback The callback to fire after depositing the data
 	 */
 	Store.prototype.drop = function (callback) {
 		var data = {todos: []};
@@ -140,4 +148,4 @@
 	// Export to window
 	window.app = window.app || {};
 	window.app.Store = Store;
-})(window);
+// })(window);

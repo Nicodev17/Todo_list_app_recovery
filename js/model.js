@@ -1,4 +1,4 @@
-(function (window) {
+// (function (window) {
 	'use strict';
 
 	/**
@@ -14,7 +14,7 @@
 	/**
 	 * Creates a new todo model
 	 *
-	 * @param {string} [title] The title of the task
+	 * @param {string} [title] The content of the todo
 	 * @param {function} [callback] The callback to fire after the model is created
 	 */
 	Model.prototype.create = function (title, callback) {
@@ -84,7 +84,7 @@
 	/**
 	 * WARNING: Will remove ALL data from storage.
 	 *
-	 * @param {function} callback The callback to fire when the storage is wiped.
+	 * @param {function} callback The callback to fire when the storage is empted.
 	 */
 	Model.prototype.removeAll = function (callback) {
 		this.storage.drop(callback);
@@ -117,4 +117,4 @@
 	// Export to window
 	window.app = window.app || {};
 	window.app.Model = Model;
-})(window);
+// })(window);
