@@ -1,18 +1,18 @@
 /*global NodeList */
-// (function (window) {
+(function (window) {
 	'use strict';
 
 	/**
 	 * Global functions
 	 * @constructor
 	 */
-	function Helper() {
+	// function Helper() {
 
 		/**
 		 * Get element(s) by CSS selector: qs = querySelector
 		 * Using in dans {@link View}.
 		 */
-		Helper.qs = function (selector, scope) {
+		window.qs = function (selector, scope) {
 			return (scope || document).querySelector(selector);
 		};
 
@@ -20,7 +20,7 @@
 		 * Get element(s) by CSS selector: qsa = querySelectorAll
 		 * Using in {@link View}.
 		 */
-		Helper.qsa = function (selector, scope) {
+		window.qsa = function (selector, scope) {
 			return (scope || document).querySelectorAll(selector);
 		};
 
@@ -34,7 +34,7 @@
 		 * @param {function} callback The callback function.
 		 * @param {object} useCapture The catched element.
 		 */
-		Helper.$on = function (target, type, callback, useCapture) {
+		window.$on = function (target, type, callback, useCapture) {
 			target.addEventListener(type, callback, !!useCapture);
 		};
 
@@ -47,7 +47,7 @@
 	 	 * @param {bolean} type Event type.
 	 	 * @param  {function} handler A callback executed if there is a certain condition.
 		 */
-		Helper.$delegate = function (target, selector, type, handler) {
+		window.$delegate = function (target, selector, type, handler) {
 			function dispatchEvent(event) {
 				var targetElement = event.target;
 				var potentialElements = window.qsa(selector, target);
@@ -70,7 +70,7 @@
 			/**
 			 * $on add a eventListener
 			 */
-			Helper.$on(target, type, dispatchEvent, useCapture);
+			window.$on(target, type, dispatchEvent, useCapture);
 		};
 
 		/**
@@ -79,7 +79,7 @@
 		 * @param {object} element The active element.
 		 * @param {string} (tagName) The element tagName.
 		 */
-		Helper.$parent = function (element, tagName) {
+		window.$parent = function (element, tagName) {
 			// OPTIMIZED
 			if (!element.parentNode) {
 				return;
@@ -95,5 +95,5 @@
 		 */
 		NodeList.prototype.forEach = Array.prototype.forEach;
 	
-	}
-// })(window);
+	// }
+})(window);
