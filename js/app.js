@@ -1,12 +1,12 @@
 /*global app, $on */
-// (function () {
+(function () {
 	'use strict';
 
 	/**
 	 * Generates the application
 	 * @constructor
 	 */
-	function App() {
+	// function App() {
 		/**
 		 * Sets up a brand new Todo list.
 		 *
@@ -34,5 +34,5 @@
 		}
 		$on(window, 'load', setView);
 		$on(window, 'hashchange', setView);
-	}
-// })();
+	// }
+})();

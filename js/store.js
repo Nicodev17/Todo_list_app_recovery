@@ -1,5 +1,5 @@
 /*jshint eqeqeq:false */
-// (function (window) {
+(function (window) {
 	'use strict';
 
 	/**
@@ -148,4 +148,4 @@
 	// Export to window
 	window.app = window.app || {};
 	window.app.Store = Store;
-// })(window);
+})(window);
