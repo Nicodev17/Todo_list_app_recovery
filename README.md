@@ -49,7 +49,7 @@ On peut utiliser le format que l’on souhaite (ex. un wiki sur Github, un docum
 - La base de code mise à jour avec les améliorations et les tests
 - La documentation technique du projet, y compris notre audit, sous le format que l’on souhaite
 
-**Vous trouverez dans le wiki de ce repository : **
+**Vous trouverez dans le wiki de ce repository :**
 
 - Un report sur les bugs trouvés et fixés
 - Des explications sur les points améliorés du code
