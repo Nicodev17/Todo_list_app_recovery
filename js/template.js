@@ -41,7 +41,7 @@
 	}
 
 	/**
-	 * Creates an <li> HTML string and returns it for placement in your app.
+	 * Creates an li HTML string and returns it for placement in your app.
 	 *
 	 * NOTE: In real life you should be using a templating engine such as Mustache
 	 * or Handlebars, however, this is a vanilla JS example.
@@ -83,22 +83,23 @@
 	};
 
 	/**
-	 * Displays a counter of how many to dos are left to complete
+	 * Displays a counter of how many todos are left to complete.
 	 *
 	 * @param {number} activeTodos The number of active todos.
-	 * @returns {string} String containing the count
+	 * @returns {string} String containing the count.
 	 */
 	Template.prototype.itemCounter = function (activeTodos) {
-		var plural = activeTodos === 1 ? '' : 's';
+		// Optimized (s removed when there is only one or zero tasks left)
+		var plural = activeTodos === 1 || activeTodos === 0 ? '' : 's';
 
-		return '<strong>' + activeTodos + '</strong> item' + plural + ' left';
+		return '<strong>' + activeTodos + '</strong> task' + plural + ' left';
 	};
 
 	/**
-	 * Updates the text within the "Clear completed" button
+	 * Updates the text in the "Clear completed" button.
 	 *
-	 * @param  {[type]} completedTodos The number of completed todos.
-	 * @returns {string} String containing the count
+	 * @param  {number} completedTodos The number of completed todos.
+	 * @returns {string} String containing the number counted.
 	 */
 	Template.prototype.clearCompletedButton = function (completedTodos) {
 		if (completedTodos > 0) {

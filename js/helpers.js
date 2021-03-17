@@ -2,51 +2,98 @@
 (function (window) {
 	'use strict';
 
-	// Get element(s) by CSS selector:
-	window.qs = function (selector, scope) {
-		return (scope || document).querySelector(selector);
-	};
-	window.qsa = function (selector, scope) {
-		return (scope || document).querySelectorAll(selector);
-	};
+	/**
+	 * Global functions
+	 * @constructor
+	 */
+	// function Helper() {
 
-	// addEventListener wrapper:
-	window.$on = function (target, type, callback, useCapture) {
-		target.addEventListener(type, callback, !!useCapture);
-	};
+		/**
+		 * Get element(s) by CSS selector: qs = querySelector
+		 * Using in dans {@link View}.
+		 */
+		window.qs = function (selector, scope) {
+			return (scope || document).querySelector(selector);
+		};
 
-	// Attach a handler to event for all elements that match the selector,
-	// now or in the future, based on a root element
-	window.$delegate = function (target, selector, type, handler) {
-		function dispatchEvent(event) {
-			var targetElement = event.target;
-			var potentialElements = window.qsa(selector, target);
-			var hasMatch = Array.prototype.indexOf.call(potentialElements, targetElement) >= 0;
+		/**
+		 * Get element(s) by CSS selector: qsa = querySelectorAll
+		 * Using in {@link View}.
+		 */
+		window.qsa = function (selector, scope) {
+			return (scope || document).querySelectorAll(selector);
+		};
 
-			if (hasMatch) {
-				handler.call(targetElement, event);
+		/**
+		 * Encapsulates the addEventListener.
+		 * Using in {@link View}.
+		 * Using in {@link App}.
+		 * 
+		 * @param {object} target  The target.
+		 * @param {bolean} type Focus or Blur.
+		 * @param {function} callback The callback function.
+		 * @param {object} useCapture The catched element.
+		 */
+		window.$on = function (target, type, callback, useCapture) {
+			target.addEventListener(type, callback, !!useCapture);
+		};
+
+		/**
+		 * Delegate an eventListener to a parent
+		 * Using in {@link View}.
+		 * 
+		 * @param  {object} target The target..
+	 	 * @param  {function} selector Check if there is a match between childrens and parents.
+	 	 * @param {bolean} type Event type.
+	 	 * @param  {function} handler A callback executed if there is a certain condition.
+		 */
+		window.$delegate = function (target, selector, type, handler) {
+			function dispatchEvent(event) {
+				var targetElement = event.target;
+				var potentialElements = window.qsa(selector, target);
+				var hasMatch = Array.prototype.indexOf.call(potentialElements, targetElement) >= 0;
+
+				/**
+				 * If we have a hasMatch element we call the manager on the target element.
+				 */
+				if (hasMatch) {
+					handler.call(targetElement, event);
+				}
 			}
-		}
 
-		// https://developer.mozilla.org/en-US/docs/Web/Events/blur
-		var useCapture = type === 'blur' || type === 'focus';
+			/**
+			 * useCapture type can be blur or focus.
+			 * @type {bolean}
+			 */
+			var useCapture = type === 'blur' || type === 'focus';
 
-		window.$on(target, type, dispatchEvent, useCapture);
-	};
+			/**
+			 * $on add a eventListener
+			 */
+			window.$on(target, type, dispatchEvent, useCapture);
+		};
 
-	// Find the element's parent with the given tag name:
-	// $parent(qs('a'), 'div');
-	window.$parent = function (element, tagName) {
-		if (!element.parentNode) {
-			return;
-		}
-		if (element.parentNode.tagName.toLowerCase() === tagName.toLowerCase()) {
-			return element.parentNode;
-		}
-		return window.$parent(element.parentNode, tagName);
-	};
+		/**
+		 * Finds the parent of the element with the tag name : $parent(qs('a'), 'div');
+		 * Using in {@link View}.
+		 * @param {object} element The active element.
+		 * @param {string} (tagName) The element tagName.
+		 */
+		window.$parent = function (element, tagName) {
+			// OPTIMIZED
+			if (!element.parentNode) {
+				return;
+			} else if (element.parentNode.tagName.toLowerCase() === tagName.toLowerCase()) {
+				return element.parentNode;
+			}
+			return window.$parent(element.parentNode, tagName);
+		};
 
-	// Allow for looping on nodes by chaining:
-	// qsa('.foo').forEach(function () {})
-	NodeList.prototype.forEach = Array.prototype.forEach;
+		/**
+		 * Allow loops on nodes : qsa('.foo').forEach(function () {})
+		 * Browsing each node is like browsing each table
+		 */
+		NodeList.prototype.forEach = Array.prototype.forEach;
+	
+	// }
 })(window);
