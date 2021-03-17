@@ -49,3 +49,13 @@ On peut utiliser le format que l’on souhaite (ex. un wiki sur Github, un docum
 - La base de code mise à jour avec les améliorations et les tests
 - La documentation technique du projet, y compris notre audit, sous le format que l’on souhaite
 
+**Vous trouverez dans le wiki de ce repository : **
+
+- Un report sur les bugs trouvés et fixés
+- Des explications sur les points améliorés du code
+- Un exposé des tests ajoutés au projet avec Jasmine
+- L'audit de performance du site concurrent 
+- La documentation technique et utilisateur de l'application
+
+[Lien du wiki](https://github.com/Nicodev17/Todo_list_app_recovery/wiki)
+
