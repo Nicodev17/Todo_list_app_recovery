@@ -1,7 +1,7 @@
 # Todo-list App code documentation
 
 <p align="center">
-  <img src="img/accueil_appli.png" width="600" title="hover text">
+  <img src="accueil_appli.png" width="600" title="image appli">
 </p>
 
 <br></br>
